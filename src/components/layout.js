@@ -16,7 +16,7 @@ const Layout = ({ children }) => (
               url
             }
           }
-        }
+        }       
       }
     `}
     render={({

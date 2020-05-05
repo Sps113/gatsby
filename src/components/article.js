@@ -1,10 +1,10 @@
-import React from "react"
+import React from "react";
 
 const Article = ({
   content: {
     title,
     text: {
-      text
+      content
     },
     banner: {
       file: {
@@ -17,9 +17,7 @@ const Article = ({
   <div>
     <h2>{title}</h2>
     <img src={url} alt={title}/>
-    <p>
-      {text}
-    </p>
+    <p>{content[0].content[0].value}</p>
     <h5>{publishedAt}</h5>
   </div>
 )
