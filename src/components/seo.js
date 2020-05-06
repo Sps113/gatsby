@@ -2,33 +2,64 @@ import React from "react"
 import PropTypes from "prop-types"
 import {Helmet} from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
+import GatsbyConfig from "../../gatsby-config"
 
-function SEO({ description, lang, meta, keywords, title }) {
+
+function SEO({ description, lang, meta, keywords, domain, email, title, titleTemplate }) {
   return (
     <StaticQuery
-      query={detailsQuery}
-      render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
+      query={graphql`
+        {
+          allContentfulSeosite {
+            edges {
+              node {
+                title
+                description
+                email
+                titleTemplate
+                keywords
+                domain
+              }
+            }
+          }
+        }
+      `}
+      render={({
+        allContentfulSeosite: {
+          edges
+        }
+      }) => {
+        const metadata =
+          edges.filter(w => w.node.domain === GatsbyConfig.siteMetadata.domain )[0].node
         return (
           <Helmet
             htmlAttributes={{
               lang,
             }}
-            title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            charSet={'utf-8'}
+            title={metadata.title}
+            titleTemplate={metadata.titleTemplate}
+            script={[
+              {"src": "http://url.com/script.js", "type": "text/javascript"}
+            ]}
+            link={[
+              {rel: "stylesheet", href: "../../animate.css"},
+              {rel: "stylesheet", href: "../../font-awesome.css"},
+              {rel: "stylesheet", href: "../../flaticon.css"},
+              {rel: "stylesheet", href: "../../style.css"}
+            ]}
             meta={[
               {
                 name: `description`,
-                content: metaDescription,
+                content: metadata.description,
               },
               {
                 property: `og:title`,
-                content: title,
+                content: metadata.title,
               },
               {
                 property: `og:description`,
-                content: metaDescription,
+                content: metadata.description,
               },
               {
                 property: `og:type`,
@@ -40,25 +71,21 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
+                content: metadata.email,
               },
               {
                 name: `twitter:title`,
-                content: title,
+                content: metadata.title,
               },
               {
                 name: `twitter:description`,
-                content: metaDescription,
+                content: metadata.description,
               },
+              {
+                name: `keywords`,
+                content: metadata.keywords,
+              }
             ]
-              .concat(
-                keywords.length > 0
-                  ? {
-                      name: `keywords`,
-                      content: keywords.join(`, `),
-                    }
-                  : []
-              )
               .concat(meta)}
           />
         )
@@ -70,27 +97,18 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [],
+  keywords: `` ,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  keywords: PropTypes.string,
+  title: PropTypes.string,
+  email: PropTypes.string,
+  domain:  PropTypes.string,
+  titleTemplate: PropTypes.string,
 }
 
 export default SEO
-
-const detailsQuery = graphql`
-  query DefaultSEOQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`

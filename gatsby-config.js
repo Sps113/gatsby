@@ -1,10 +1,8 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Catalog site`,
-    description: `another catalog site.`,
-    author: `@pserg`,
+    domain: "topcasinosonline.ca",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
