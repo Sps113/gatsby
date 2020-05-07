@@ -7,6 +7,24 @@ export default function Page(node) {
   const post = node.pageContext.node.seoText.seoText?node.pageContext.node.seoText.seoText: ""
   const blocks = node.pageContext.node.blocks?node.pageContext.node.blocks:[]
   console.log(node ,Object.values(node.pageContext.node));
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
   return (
 
     <Layout>
@@ -23,7 +41,8 @@ export default function Page(node) {
                {blocks.map(block => (
                  <div>
                    <h2>{block.h2?block.h2:""}</h2>
-                   <table>
+                   <input type="text" id="myInput" className="myInput" onKeyUp={myFunction} placeholder="Search for CASINO.." title="Type in a name" />
+                   <table id="myTable" className="myTable">
                     <tbody>
                       <tr className="header">
                         <th style={{width: "18%"}}>CASINO</th>
@@ -36,7 +55,10 @@ export default function Page(node) {
                           <td>
                             <a title={raw.name} rel="nofollow" target="_blank" href={raw.url}>{raw.name}</a>
                             <br/>
-                            <img src="./img/top-bonus.webp" alt="Casino Bonus Canada" className="imgstars" />
+                            {raw.stars &&
+                                <img src="./img/top-bonus.webp" alt="Casino Bonus Canada" className="imgstars" />
+                            }
+
                           </td>
                           <td>
                             <img src="./img/ca-bonus.webp" alt="Best Canada Bonuses" className="imgca"/>
