@@ -9,7 +9,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `ContentfulPage` && node.slug) {
-    console.log(node, getNode, actions)
+    // console.log(node, getNode, actions)
     // const slug = createFilePath({ node, getNode  })
 
     createNodeField({
@@ -31,11 +31,19 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             h1
             title
+            description
             seoText {
               seoText
             }
-            internal {
-              type
+            blocks {
+              h2
+              table {
+                name
+                stars
+                url
+                useCode
+                text
+              }
             }
           }
         }
