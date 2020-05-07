@@ -39,9 +39,7 @@ function SEO({ description, lang, meta, keywords, domain, email, title, titleTem
             charSet={'utf-8'}
             title={metadata.title}
             titleTemplate={metadata.titleTemplate}
-            script={[
-              {"src": "http://url.com/script.js", "type": "text/javascript"}
-            ]}
+
             link={[
               {rel: "stylesheet", href: "../../animate.css"},
               {rel: "stylesheet", href: "../../font-awesome.css"},
