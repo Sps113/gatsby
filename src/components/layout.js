@@ -15,7 +15,7 @@ const Layout = ({ children }) => (
             node {
               menu {
                 name
-                url
+                slug
               }
             }
           }

@@ -16,7 +16,7 @@ const Menu = ({menu}) => (
                 >
                   <Link
                     className="nav-link"
-                    to={"/" + link.url}>
+                    to={ link.slug}>
                     {link.name}
                   </Link>
                 </li>
