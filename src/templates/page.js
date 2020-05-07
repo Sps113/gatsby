@@ -38,9 +38,10 @@ export default function Page(node) {
             <div className="col-lg-8 ftco-animate fadeInUp ftco-animated">
                <h1>{node.pageContext.node.h1}</h1>
                <div  dangerouslySetInnerHTML={{__html: post}} />
-               {blocks.map(block => (
-                 <div>
+               {blocks.map((block, i )=> (
+                 <div id={"block-" + i}>
                    <h2>{block.h2?block.h2:""}</h2>
+                   {block.text.text?block.text.text:""}
                    <input type="text" id="myInput" className="myInput" onKeyUp={myFunction} placeholder="Search for CASINO.." title="Type in a name" />
                    <table id="myTable" className="myTable">
                     <tbody>

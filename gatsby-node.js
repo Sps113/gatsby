@@ -37,12 +37,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             blocks {
               h2
+              text {
+                text
+              }
               table {
                 name
                 stars
                 url
                 useCode
                 text
+                date
               }
             }
           }
