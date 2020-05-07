@@ -5,20 +5,21 @@
  */
 
 // You can delete this file if you're not using it
-// const { createFilePath } = require(`gatsby-source-filesystem`)
-// exports.onCreateNode = ({ node, getNode, actions }) => {
-//   const { createNodeField } = actions
-//   if (node.internal.type === `ContentfulPage` && node.url) {
-//     console.log(node, getNode, actions)
-//     const value = createFilePath({ node, getNode })
-//
-//     createNodeField({
-//       name: `slug`,
-//       node,
-//       value,
-//     })
-//   }
-// }
+const { createFilePath } = require(`gatsby-source-filesystem`)
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `ContentfulPage` && node.slug) {
+    console.log(node, getNode, actions)
+    // const slug = createFilePath({ node, getNode  })
+
+    createNodeField({
+      node,
+      name: `slug`,
+      value: node.slug,
+
+    })
+  }
+}
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const path = require('path')
@@ -32,6 +33,9 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             seoText {
               seoText
+            }
+            internal {
+              type
             }
           }
         }
