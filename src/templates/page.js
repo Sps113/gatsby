@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet"
 
 export default function Page(node) {
   const post = node.pageContext.node.seoText.seoText?node.pageContext.node.seoText.seoText: ""
-  const blocks = node.pageContext.node.blocks
+  const blocks = node.pageContext.node.blocks?node.pageContext.node.blocks:[]
   console.log(node ,Object.values(node.pageContext.node));
   return (
 
