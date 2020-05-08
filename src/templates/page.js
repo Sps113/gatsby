@@ -2,6 +2,7 @@ import React from "react"
   // import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import {Helmet} from "react-helmet"
+import moment from 'moment'
 
 export default function Page(node) {
   const post = node.pageContext.node.seoText.seoText?node.pageContext.node.seoText.seoText: ""
@@ -41,9 +42,9 @@ export default function Page(node) {
                <h1>{node.pageContext.node.h1}</h1>
                <div  dangerouslySetInnerHTML={{__html: post}} />
                {blocks.map((block, i )=> (
-                 <div id={"block-" + i}>
+                 <div key={i} id={"block-" + i}>
                    <h2>{block.h2?block.h2:""}</h2>
-                   {(block.text && block.text.text)?block.text.text:""}
+                   {(block.text && block.text.text)?<div  dangerouslySetInnerHTML={{__html: block.text.text}} />:""}
                    <input type="text" id={"myInput-" +i} className="myInput" onKeyUp={()=>myFunction(i)} placeholder="Search for CASINO.." title="Type in a name" />
                    <table id={"mytable-" + i} className="myTable">
                     <tbody>
@@ -53,10 +54,10 @@ export default function Page(node) {
                         <th style={{width: "50%"}}>BONUS</th>
                         <th style={{width: "10%"}}>DATA</th>
                       </tr>
-                      {block.table.map(raw => (
-                        <tr>
+                      {block.table.map((raw, j) => (
+                        <tr key={j} id={"raw-"+j}>
                           <td>
-                            <a title={raw.name} rel="nofollow" target="_blank" href={raw.url}>{raw.name}</a>
+                            <a  title={raw.name} rel="nofollow" target="_blank" href={raw.url}>{raw.name}</a>
                             <br/>
                             {raw.stars &&
                                 <img src="./img/top-bonus.webp" alt="Casino Bonus Canada" className="imgstars" />
@@ -69,7 +70,7 @@ export default function Page(node) {
                           <td>{raw.text}<br/>
                              <strong>Use code:</strong> <span>{raw.useCode}</span>
                           </td>
-                          <td>{raw.date}</td>
+                          <td>{moment(raw.date).format('YYYY/MM/DD')}</td>
                         </tr>
                       ))}
                     </tbody>

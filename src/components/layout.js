@@ -50,8 +50,8 @@ const Layout = ({ children }) => (
         <main>{children}</main>
         <Footer />
 
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossOrigin="anonymous"></script>
-        <script src="/js/main.js"></script>
+        <script defer src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossOrigin="anonymous"></script>
+        <script defer src="/js/main.js"></script>
       </>)
     }}
   />
