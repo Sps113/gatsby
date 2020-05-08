@@ -7,11 +7,13 @@ export default function Page(node) {
   const post = node.pageContext.node.seoText.seoText?node.pageContext.node.seoText.seoText: ""
   const blocks = node.pageContext.node.blocks?node.pageContext.node.blocks:[]
   console.log(node ,Object.values(node.pageContext.node));
-  function myFunction() {
+
+  function myFunction(j) {
+    console.log(j)
     var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
+    input = document.getElementById("myInput-" + j);
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("mytable-" + j);
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[0];
@@ -41,13 +43,13 @@ export default function Page(node) {
                {blocks.map((block, i )=> (
                  <div id={"block-" + i}>
                    <h2>{block.h2?block.h2:""}</h2>
-                   {block.text.text?block.text.text:""}
-                   <input type="text" id="myInput" className="myInput" onKeyUp={myFunction} placeholder="Search for CASINO.." title="Type in a name" />
-                   <table id="myTable" className="myTable">
+                   {(block.text && block.text.text)?block.text.text:""}
+                   <input type="text" id={"myInput-" +i} className="myInput" onKeyUp={()=>myFunction(i)} placeholder="Search for CASINO.." title="Type in a name" />
+                   <table id={"mytable-" + i} className="myTable">
                     <tbody>
                       <tr className="header">
                         <th style={{width: "18%"}}>CASINO</th>
-                        <th style={{width: "7%"}}></th>
+                        <th style={{width: "7%" }}></th>
                         <th style={{width: "50%"}}>BONUS</th>
                         <th style={{width: "10%"}}>DATA</th>
                       </tr>
