@@ -51,6 +51,7 @@ const Layout = ({ children }) => (
         <Footer />
 
         <script defer src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossOrigin="anonymous"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/stellar-base/3.0.2/stellar-base.min.js"></script>
         <script defer src="/js/main.js"></script>
       </>)
     }}
