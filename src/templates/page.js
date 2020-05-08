@@ -45,7 +45,7 @@ export default function Page(node) {
                  <div key={i} id={"block-" + i}>
                    <h2 id={"h2-" + i}>{block.h2?block.h2:""}</h2>
                    {(block.text && block.text.text)?<div  dangerouslySetInnerHTML={{__html: block.text.text}} />:""}
-                   <input type="text" id={"myInput-" +i} className="myInput" onKeyUp={()=>myFunction(i)} placeholder="Search for CASINO.." title="Type in a name" />
+                   {blocks.length == 1 ? <input type="text" id={"myInput-" +i} className="myInput" onKeyUp={()=>myFunction(i)} placeholder="Search for CASINO.." title="Type in a name" />:""}
                    <table id={"mytable-" + i} className="myTable">
                     <tbody>
                       <tr className="header">
