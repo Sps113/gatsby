@@ -31,10 +31,37 @@ export default function Page(node) {
   return (
 
     <Layout>
-      <Helmet>
-        <title>{node.pageContext.node.h1}</title>
-        <meta name="description" content={node.pageContext.node.description} />
-      </Helmet>
+      <Helmet
+      title={node.pageContext.node.title}
+      meta={[
+        {
+          name: `description`,
+          content: node.pageContext.node.description,
+        },
+        {
+          property: `og:title`,
+          content: node.pageContext.node.title,
+        },
+        {
+          property: `og:description`,
+          content: node.pageContext.node.description,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:title`,
+          content: node.pageContext.node.title,
+        },
+        {
+          name: `twitter:description`,
+          content: node.pageContext.node.description,
+        }  ]} />
       <section className="ftco-section ftco-degree-bg">
         <div className="container">
           <div className="row">
@@ -45,7 +72,7 @@ export default function Page(node) {
                  <div key={i} id={"block-" + i}>
                    <h2 id={"h2-" + i}>{block.h2?block.h2:""}</h2>
                    {(block.text && block.text.text)?<div  dangerouslySetInnerHTML={{__html: block.text.text}} />:""}
-                   {blocks.length == 1 ? <input type="text" id={"myInput-" +i} className="myInput" onKeyUp={()=>myFunction(i)} placeholder="Search for CASINO.." title="Type in a name" />:""}
+                   {blocks.length === 1 ? <input type="text" id={"myInput-" +i} className="myInput" onKeyUp={()=>myFunction(i)} placeholder="Search for CASINO.." title="Type in a name" />:""}
                    <table id={"mytable-" + i} className="myTable">
                     <tbody>
                       <tr className="header">
@@ -57,7 +84,7 @@ export default function Page(node) {
                       {block.table.map((raw, j) => (
                         <tr key={j} id={"raw-"+j}>
                           <td>
-                            <a  title={raw.name} rel="nofollow" target="_blank" href={raw.url}>{raw.name}</a>
+                            <a  title={raw.name} rel="nofollow noopener noreferrer" target="_blank" href={raw.url}>{raw.name}</a>
                             <br/>
                             {raw.stars &&
                                 <img src="./img/top-bonus.webp" alt="Casino Bonus Canada" className="imgstars" />

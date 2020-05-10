@@ -1,7 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 
-const Footer = ({menu}) => (
+const Footer = ({data}) => (
   <footer className="footer">
       <div className="container-fluid px-lg-5">
           <div className="row">
@@ -10,13 +10,18 @@ const Footer = ({menu}) => (
                       <div className="col-md-4 mb-md-0 mb-4">
 
                           <h2 className="footer-heading">About us</h2>
-                          <p> All of these great bonus offers are available to players in Canada! We offer best list No Deposit Casinos & Bonus Codes 2020! </p>
-                          <p>Sign up for news on the latest and greatest no deposit bonuses and casinos, delivered straight to your inbox</p>
-                          <p> contact@casinosbonuscodes.ca</p>
+                          <div  dangerouslySetInnerHTML={{__html: data.aboutSite.aboutSite}} />
+                          <p>{data.email}</p>
                           <ul className="ftco-footer-social p-0">
-                              <li className="ftco-animate fadeInUp ftco-animated"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span className="fa fa-twitter"></span></a></li>
-                              <li className="ftco-animate fadeInUp ftco-animated"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span className="fa fa-facebook"></span></a></li>
-                              <li className="ftco-animate fadeInUp ftco-animated"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span className="fa fa-instagram"></span></a></li>
+                              <li className="ftco-animate fadeInUp ftco-animated">
+                                <a href="/" data-toggle="tooltip" data-placement="top" title="Twitter"><span className="fa fa-twitter"></span></a>
+                              </li>
+                              <li className="ftco-animate fadeInUp ftco-animated">
+                                <a href="/" data-toggle="tooltip" data-placement="top" title="Facebook"><span className="fa fa-facebook"></span></a>
+                              </li>
+                              <li className="ftco-animate fadeInUp ftco-animated">
+                                <a href="/" data-toggle="tooltip" data-placement="top" title="Instagram"><span className="fa fa-instagram"></span></a>
+                              </li>
                           </ul>
                       </div>
                       <div className="col-md-8">
@@ -31,9 +36,7 @@ const Footer = ({menu}) => (
                                           </div>
                                           <div className="desc">
                                               <h2 className="footer-heading">Our writters</h2>
-
-                                              <p>We are in the online gambling news industry for more than 5 years! Our writers worked for such websites as askgamblers, Casino Org, Gamcare and many others. We enjoy writing about exciting advances in the gambling world!</p>
-                                              <p>We are check all information! Try found best bonus offers for you!</p>
+                                                <div  dangerouslySetInnerHTML={{__html: data.aboutAutor.aboutAutor}} />
                                           </div>
                                       </div>
 
@@ -45,7 +48,7 @@ const Footer = ({menu}) => (
                   <div className="row mt-md-5">
                       <div className="col-f">
                           <p>
-                              Copyright © <a title="Best Bonus Casino" href="/">CasinosBonusCodes.ca</a> 2020 - All Rights Reserved.
+                              Copyright © <a title="Best Bonus Casino" href="/">{data.domain}</a> 2020 - All Rights Reserved.
                           </p>
 
                       </div>
@@ -73,7 +76,7 @@ const Footer = ({menu}) => (
               </div>
           </div>
       </div>
-    
+
   </footer>
 
 )

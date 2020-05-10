@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import {Helmet} from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
-import GatsbyConfig from "../../gatsby-config"
+// import GatsbyConfig from "../../gatsby-config"
 
 
 function SEO({ description, lang, meta, keywords, domain, email, title, titleTemplate }) {
@@ -13,11 +13,7 @@ function SEO({ description, lang, meta, keywords, domain, email, title, titleTem
           allContentfulSeosite {
             edges {
               node {
-                title
-                description
                 email
-                titleTemplate
-                keywords
                 domain
               }
             }
@@ -29,16 +25,15 @@ function SEO({ description, lang, meta, keywords, domain, email, title, titleTem
           edges
         }
       }) => {
-        const metadata =
-          edges.filter(w => w.node.domain === GatsbyConfig.siteMetadata.domain )[0].node
+        // const metadata =
+        //   edges.filter(w => w.node.domain === GatsbyConfig.siteMetadata.domain )[0].node
         return (
           <Helmet
             htmlAttributes={{
               lang,
             }}
             charSet={'utf-8'}
-            title={metadata.title}
-            titleTemplate={metadata.titleTemplate}
+
 
             link={[
               {rel: "stylesheet", href: "../../animate.css"},
@@ -46,45 +41,41 @@ function SEO({ description, lang, meta, keywords, domain, email, title, titleTem
               {rel: "stylesheet", href: "../../flaticon.css"},
               {rel: "stylesheet", href: "../../style.css"}
             ]}
-            meta={[
-              {
-                name: `description`,
-                content: metadata.description,
-              },
-              {
-                property: `og:title`,
-                content: metadata.title,
-              },
-              {
-                property: `og:description`,
-                content: metadata.description,
-              },
-              {
-                property: `og:type`,
-                content: `website`,
-              },
-              {
-                name: `twitter:card`,
-                content: `summary`,
-              },
-              {
-                name: `twitter:creator`,
-                content: metadata.email,
-              },
-              {
-                name: `twitter:title`,
-                content: metadata.title,
-              },
-              {
-                name: `twitter:description`,
-                content: metadata.description,
-              },
-              {
-                name: `keywords`,
-                content: metadata.keywords,
-              }
-            ]
-              .concat(meta)}
+            // meta={[
+            //   {
+            //     name: `description`,
+            //     content: metadata.description,
+            //   },
+            //   {
+            //     property: `og:title`,
+            //     content: metadata.title,
+            //   },
+            //   {
+            //     property: `og:description`,
+            //     content: metadata.description,
+            //   },
+            //   {
+            //     property: `og:type`,
+            //     content: `website`,
+            //   },
+            //   {
+            //     name: `twitter:card`,
+            //     content: `summary`,
+            //   },
+            //   {
+            //     name: `twitter:creator`,
+            //     content: metadata.email,
+            //   },
+            //   {
+            //     name: `twitter:title`,
+            //     content: metadata.title,
+            //   },
+            //   {
+            //     name: `twitter:description`,
+            //     content: metadata.description,
+            //   }
+            // ]
+            //   .concat(meta)}
           />
         )
       }}

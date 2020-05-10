@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 
 import Menu from "./menu"
 import SEO from "./seo"
@@ -17,6 +17,20 @@ const Layout = ({ children }) => (
               menu {
                 name
                 slug
+              }
+              email
+              domain
+              footerjs {
+                footerjs
+              }
+              headerjs {
+                headerjs
+              }
+              aboutAutor {
+                aboutAutor
+              }
+              aboutSite {
+                aboutSite
               }
             }
           }
@@ -39,7 +53,7 @@ const Layout = ({ children }) => (
                     <div className="col d-flex justify-content-end">
                         <div className="social-media">
                             <p className="mb-0 d-flex">
-                                <a href="./" className="d-flex align-items-center justify-content-center"></a>
+                                <Link to="/" className="d-flex align-items-center justify-content-center"></Link>
                             </p>
                         </div>
                     </div>
@@ -48,7 +62,7 @@ const Layout = ({ children }) => (
         </div>
         <Menu menu={edges[0].node} />
         <main>{children}</main>
-        <Footer />
+        <Footer data={edges[0].node}/>
 
         <script defer src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossOrigin="anonymous"></script>
         <script defer src="https://cdnjs.cloudflare.com/ajax/libs/stellar-base/3.0.2/stellar-base.min.js"></script>

@@ -25,6 +25,7 @@
     "react-truncate": "^2.4.0"
   },
   "devDependencies": {
+    "ftp-deploy": "^2.3.7",
     "prettier": "2.0.5"
   },
   "keywords": [
@@ -32,13 +33,15 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && npm run deploy",
+    "build-prod": "BABEL_DISABLE_CACHE=1 gatsby build && npm run deploy",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "node deploy"
   },
   "repository": {
     "type": "git",
