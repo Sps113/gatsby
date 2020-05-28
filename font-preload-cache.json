@@ -1,0 +1,35 @@
+{
+  "timestamp": 1589274673910,
+  "hash": "d3e807be55302ab8d0c7528567537f01",
+  "assets": {
+    "/first-deposit.html": { "/fonts/fontawesome-webfont.woff2?v=4.7.0": true },
+    "/no-deposit.html": {
+      "/fonts/fontawesome-webfont.woff2?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.woff?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.ttf?v=4.7.0": true,
+      "/fonts/flaticon/font/Flaticon.woff": true,
+      "/fonts/flaticon/font/Flaticon.ttf": true
+    },
+    "/welcome-bonus.html": {
+      "/fonts/fontawesome-webfont.woff2?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.woff?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.ttf?v=4.7.0": true,
+      "/fonts/flaticon/font/Flaticon.woff": true,
+      "/fonts/flaticon/font/Flaticon.ttf": true
+    },
+    "/404/": {
+      "/fonts/fontawesome-webfont.woff2?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.woff?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.ttf?v=4.7.0": true,
+      "/fonts/flaticon/font/Flaticon.woff": true,
+      "/fonts/flaticon/font/Flaticon.ttf": true
+    },
+    "/404.html": {
+      "/fonts/fontawesome-webfont.woff2?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.woff?v=4.7.0": true,
+      "/fonts/fontawesome-webfont.ttf?v=4.7.0": true,
+      "/fonts/flaticon/font/Flaticon.woff": true,
+      "/fonts/flaticon/font/Flaticon.ttf": true
+    }
+  }
+}

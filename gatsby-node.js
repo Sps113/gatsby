@@ -16,13 +16,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: `slug`,
       value: node.slug,
-
     })
   }
 }
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const path = require('path')
+  const path = require("path")
   const result = await graphql(`
     query {
       allContentfulPage {
@@ -64,5 +63,13 @@ exports.createPages = async ({ graphql, actions }) => {
         node: node,
       },
     })
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    node: {
+      fs: "empty",
+    },
   })
 }

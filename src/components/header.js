@@ -6,14 +6,14 @@ const Header = () => (
   <header
     style={{
       background: `rebeccapurple`,
-      marginBottom: `1.45rem`
+      marginBottom: `1.45rem`,
     }}
   >
     <div
       style={{
         margin: `0 auto`,
         maxWidth: 960,
-        padding: `1.45rem 1.0875rem`
+        padding: `1.45rem 1.0875rem`,
       }}
     >
       <Link
@@ -22,15 +22,19 @@ const Header = () => (
           color: `white`,
           textDecoration: `none`,
           display: `flex`,
-          alignItems: `center`
+          alignItems: `center`,
         }}
       >
-        <img src={logo} alt="logo" style={{
-          height: `3em`,
-          borderRadius: `50%`,
-          margin: `0.5em`,
-        }}/>
-        <h1 style={{margin: `0`}}>{title}</h1>
+        <img
+          src={logo}
+          alt="logo"
+          style={{
+            height: `3em`,
+            borderRadius: `50%`,
+            margin: `0.5em`,
+          }}
+        />
+        <h1 style={{ margin: `0` }}>{title}</h1>
       </Link>
     </div>
   </header>
