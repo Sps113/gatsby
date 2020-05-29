@@ -2,11 +2,11 @@ var FtpDeploy = require("ftp-deploy")
 var ftpDeploy = new FtpDeploy()
 
 var config = {
-  user: "admin_top",
+  user: FTP_USER,
   // Password optional, prompted if none given
-  password: "BU1nImlZXV",
-  host: "5.61.50.231",
-  port: 21,
+  password: FTP_PASSWD,
+  host: FTP_HOST,
+  port: FTP_PORT,
   localRoot: __dirname + "/public",
   remoteRoot: "/",
   // include: ["*", "**/*"],      // this would upload everything except dot files

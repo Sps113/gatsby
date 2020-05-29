@@ -95,52 +95,55 @@ export default function Page(node) {
                   ) : (
                     ""
                   )}
-                  <table id={"mytable-" + i} className="myTable">
-                    <tbody>
-                      <tr className="header">
-                        <th style={{ width: "18%" }}>CASINO</th>
-                        <th style={{ width: "7%" }}></th>
-                        <th style={{ width: "50%" }}>BONUS</th>
-                        <th style={{ width: "10%" }}>DATA</th>
-                      </tr>
-                      {block.table.map((raw, j) => (
-                        <tr key={j} id={"raw-" + j}>
-                          <td>
-                            <a
-                              title={raw.name}
-                              rel="nofollow noopener noreferrer"
-                              target="_blank"
-                              href={raw.url}
-                            >
-                              {raw.name}
-                            </a>
-                            <br />
-                            {raw.stars && (
-                              <img
-                                src="./img/top-bonus.webp"
-                                alt="Casino Bonus Canada"
-                                className="imgstars"
-                              />
-                            )}
-                          </td>
-                          <td>
-                            <img
-                              src="./img/ca-bonus.webp"
-                              alt="Best Canada Bonuses"
-                              className="imgca"
-                            />
-                          </td>
-                          <td>
-                            {raw.text}
-                            <br />
-                            <strong>Use code:</strong>{" "}
-                            <span>{raw.useCode}</span>
-                          </td>
-                          <td>{moment(raw.date).format("YYYY/MM/DD")}</td>
+                  {block.table && block.table.length > 0 ? (
+                    <table id={"mytable-" + i} className="myTable">
+                      <tbody>
+                        <tr className="header">
+                          <th style={{ width: "18%" }}>CASINO</th>
+                          <th style={{ width: "7%" }}></th>
+                          <th style={{ width: "50%" }}>BONUS</th>
+                          <th style={{ width: "10%" }}>DATA</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                        {block.table.map((raw, j) => (
+                          <tr key={j} id={"raw-" + j}>
+                            <td>
+                              <a
+                                title={raw.name}
+                                rel="nofollow noopener noreferrer"
+                                target="_blank"
+                                href={raw.url}
+                              >
+                                {raw.name}
+                              </a>
+                              <br />
+                              {raw.stars && (
+                                <img
+                                  src="./img/top-bonus.webp"
+                                  alt="Casino Bonus Canada"
+                                  className="imgstars"
+                                />
+                              )}
+                            </td>
+                            <td>
+                              <img
+                                src="./img/ca-bonus.webp"
+                                alt="Best Canada Bonuses"
+                                className="imgca"
+                              />
+                            </td>
+                            <td>
+                              {raw.text}
+                              <br />
+                              <strong>Use code:</strong>{" "}
+                              <span>{raw.useCode}</span>
+                            </td>
+                            <td>{moment(raw.date).format("YYYY/MM/DD")}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table> ) : (
+                      ""
+                   )}
                 </div>
               ))}
             </div>
